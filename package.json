@@ -1,0 +1,58 @@
+{
+  "name": "hikeplace",
+  "version": "1.0.0",
+  "description": "HikePlace: A Hapi/node application for logging and managing information about hiking trails!",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "lint": "./node_modules/.bin/eslint . --ext .js",
+    "dev": "npx nodemon  --ignore 'src/models/json/*.json'",
+    "test": "mocha --ui tdd test/**/*.js -exit",
+    "testmodels": "./node_modules/mocha/bin/mocha --ui tdd test/models/**/*.js",
+    "testapi": "./node_modules/mocha/bin/mocha --ui tdd test/api/**/*.js"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeanKervick/hikeplace.git"
+  },
+  "author": "Seán Kervick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeanKervick/hikeplace/issues"
+  },
+  "homepage": "https://github.com/SeanKervick/hikeplace#readme",
+  "devDependencies": {
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "^10.0.6",
+    "axios": "^1.6.7",
+    "chai": "^5.0.3",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "mocha": "^10.2.0",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.2"
+  },
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "@hapi/cookie": "^12.0.1",
+    "@hapi/hapi": "^21.3.2",
+    "@hapi/inert": "^7.1.0",
+    "@hapi/vision": "^7.0.3",
+    "chai": "^5.1.0",
+    "cloudinary": "^2.0.2",
+    "dotenv": "^16.4.2",
+    "handlebars": "^4.7.8",
+    "hapi-swagger": "^17.2.1",
+    "joi": "^17.12.1",
+    "lowdb": "^7.0.1",
+    "mocha": "^10.3.0",
+    "mongoose": "^8.1.3",
+    "uuid": "^9.0.1"
+  }
+}

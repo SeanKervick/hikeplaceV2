@@ -1,0 +1,36 @@
+<form class="box" action="/dashboard/addlocation" method="POST">
+  <label>Enter Hike Trail Details:</label>
+  <div class="field">
+    <input class="input" type="text" placeholder="Enter Hike Trail Title" name="title">
+  </div>
+  <div class="field">
+    <textarea class="textarea" placeholder="Enter Description" name="description"></textarea>
+  </div>
+  <div class="field is-horizontal">
+    <div class="field-body">
+      <div class="field">
+        <input class="input" type="text" placeholder="Enter Longitude" name="longitude">
+      </div>
+      <div class="field">
+        <input class="input" type="text" placeholder="Enter Latitude" name="latitude">
+      </div>
+      <div class="field">
+        <input class="input" type="text" placeholder="Distance (km)" name="distance">
+      </div>
+      <div class="field">
+        <div class="control">
+          <div class="select">
+            <select name="difficulty">
+              <option value="" disabled selected>Select Difficulty</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="button is-primary">Add Hike</button>
+</form>

@@ -1,0 +1,28 @@
+{{> welcome-menu active="signup"}}
+
+<section class="section">
+  <h1 class="title">sign up</h1>
+  <form action="/register" method="POST">
+    <label class="label">name</label>
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field">
+          <input class="input" type="text" placeholder="enter first name" name="firstName">
+        </div>
+        <div class="field">
+          <input class="input" type="text" placeholder="enter last name" name="lastName">
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">email</label> <input class="input" type="text" placeholder="enter email" name="email">
+    </div>
+    <div class="field">
+      <label class="label">password</label> <input class="input" type="password" placeholder="enter Password" name="password">
+    </div>
+    <div class="field is-grouped">
+      <button class="button is-link">submit</button>
+    </div>
+  </form>
+</section>
+  {{> footer}}

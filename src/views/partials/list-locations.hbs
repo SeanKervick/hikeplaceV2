@@ -1,0 +1,29 @@
+{{#each locations}}
+<div class="box" style="max-height: 350px; ">
+  <div class="columns">
+    {{!-- left column --}}
+    <div class="column is-half">
+      <h3 class="title">{{title}}</h3>
+      <div style="text-align: left;">
+        <p><strong>Description:</strong> {{description}}</p>
+        <p><strong>Longitude:</strong> {{longitude}}</p>
+        <p><strong>Latitude:</strong> {{latitude}}</p>
+        <p><strong>Distance:</strong> {{distance}}km</p>
+        <p><strong>Difficulty:</strong> {{difficulty}}</p>
+          <div>
+          <a href="/dashboard/deletelocation/{{_id}}" title="Delete hiketrail" class="button is-danger"
+            onclick="return confirm('Are you sure you want to delete this hike trail?');">Delete Hiketrail</i></a>
+        </div>
+      </div>
+    </div>
+    {{!-- right column --}}
+    <div class="column is-half">
+      {{#if img}}
+      <img src={{img}} alt="hiketrail Image" style="max-height: 350px; max-width: 400px;">
+      {{else}}
+      {{> location-image}}
+      {{/if}}
+    </div>
+  </div>
+</div>
+{{/each}}

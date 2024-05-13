@@ -1,0 +1,22 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      {{> hikeplace-brand}}
+    </a>
+  </div>
+  <div id="navbarBasicExample" class="navbar-menu is-active">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a id="dashboard" class="button" href="/dashboard"> dashboard </a>
+          <a id="about" class="button" href="/about"> about </a>
+          <a id="logout" class="button" href="/logout"> logout </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.getElementById("{{active}}").classList.add("is-primary");
+</script>

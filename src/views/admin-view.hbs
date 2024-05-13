@@ -1,0 +1,12 @@
+{{> admin-menu}}
+<section class="section">
+  <div class="container">
+    <h1 class="title has-text-centered">Admin Panel</h1>
+    {{> list-users}}
+  </div>
+</section>
+  {{> footer}}
+
+<script>
+  document.getElementById("{{active}}").classList.add("is-primary");
+</script>

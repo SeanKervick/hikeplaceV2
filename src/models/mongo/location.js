@@ -9,6 +9,7 @@ const locationSchema = new Schema({
   latitude: Number,
   distance: Number,
   difficulty: String,
+  public_location: Boolean,
   img: String,
   userid: {
     type: Schema.Types.ObjectId,

@@ -29,6 +29,7 @@ export const LocationSpec = Joi.object()
     distance: Joi.number().allow("").optional(),
     difficulty: Joi.string().required(),
     userid: IdSpec,
+    public_location: Joi.boolean().optional().default(false),
   })
   .label("Location");
 
@@ -38,12 +39,3 @@ export const LocationSpecPlus = LocationSpec.keys({
 }).label("LocationPlus");
 
 export const LocationArraySpec = Joi.array().items(LocationSpecPlus).label("LocationArray");
-
-// export const LocationSpec = {
-//   title: Joi.string().required(),
-//   description: Joi.string().required(),
-//   longitude: Joi.number().allow("").optional(),
-//   latitude: Joi.number().allow("").optional(),
-//   distance: Joi.number().allow("").optional(),
-//   difficulty: Joi.string().required(),
-// };

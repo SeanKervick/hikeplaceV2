@@ -36,6 +36,7 @@ export const accountsController = {
       return h.redirect("/");
     },
   },
+  
   showLogin: {
     auth: false,
     handler: function (request, h) {

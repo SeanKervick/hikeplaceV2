@@ -36,6 +36,7 @@ export const dashboardController = {
         latitude: request.payload.latitude,
         distance: request.payload.distance,
         difficulty: request.payload.difficulty,
+        public_location: request.payload.public_location,
       };
       await db.locationStore.addLocation(newLocation);
       return h.redirect("/dashboard");

@@ -6,6 +6,11 @@ export const locationMongoStore = {
     return locations;
   },
 
+  async getAllPublicLocations() {
+    const publicLocations = await Location.find({ public_location: true }).lean();
+    return publicLocations;
+  },
+
   async getLocationById(id) {
     if (id) {
       const location = await Location.findOne({ _id: id }).lean();
@@ -39,13 +44,6 @@ export const locationMongoStore = {
   async deleteAllLocations() {
     await Location.deleteMany({});
   },
-
-  // async updateLocation(updatedLocation) {
-  //   const location = await Location.findOne({ _id: updatedLocation._id });
-  //   location.title = updatedLocation.title;
-  //   location.img = updatedLocation.img;
-  //   await location.save();
-  // },
 
     // function to update a location image
     async updateLocationImage(locationId, imageUrl) {

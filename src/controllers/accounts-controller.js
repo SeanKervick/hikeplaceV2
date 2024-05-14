@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import { db } from "../models/db.js";
 import { UserSpec, UserCredentialsSpec, } from "../models/joi-schemas.js";
 
+let loggedIn = false; // variable to control menu options
 
 export const accountsController = {
   index: {
@@ -54,6 +55,7 @@ export const accountsController = {
       },
     },
     handler: async function (request, h) {
+
       const { email, password } = request.payload;
 
       if (email === process.env.adminEmail && password === process.env.adminPassword) {
@@ -64,10 +66,13 @@ export const accountsController = {
       const user = await db.userStore.getUserByEmail(email);
       if (!user || user.password !== password) {
         console.log("no match");
+        loggedIn = false; // variable to control menu options
         return h.redirect("/");
       }
       request.cookieAuth.set({ id: user._id });
+      loggedIn = true; // variable to control menu options
       console.log("user logged in");
+      console.log("loggedIn = ", loggedIn);
       return h.redirect("/dashboard");
     },
   },
@@ -75,6 +80,8 @@ export const accountsController = {
   logout: {
     handler: function (request, h) {
       request.cookieAuth.clear();
+      loggedIn = false; // variable to control menu options
+      console.log("loggedIn = ", loggedIn);
       return h.redirect("/");
     },
   },
@@ -88,6 +95,7 @@ export const accountsController = {
     if (!user) {
       return { isValid: false };
     }
+    loggedIn = true; // variable to control menu options
     return {isValid: true, credentials: user };
   },
 };

@@ -7,7 +7,7 @@ export const locationMongoStore = {
   },
 
   async getAllPublicLocations() {
-    const publicLocations = await Location.find({ public_location: true }).lean();
+    const publicLocations = await Location.find({ public_location: true }).populate("userid", "firstName lastName").lean();
     return publicLocations;
   },
 

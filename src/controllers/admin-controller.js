@@ -31,4 +31,12 @@ export const adminController = {
     },
   },
 
+  deleteAllLocations: {
+    handler: async function (request, h) {
+      const locations = await db.locationStore.getAllLocations();
+      await db.locationStore.deleteAllLocations(locations);
+      return h.redirect("/admin");
+    },
+  },
+
 };

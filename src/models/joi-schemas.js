@@ -22,16 +22,19 @@ export const UserCredentialsSpec = {
 
 export const LocationSpec = Joi.object()
   .keys({
-    title: Joi.string().required(),
-    description: Joi.string().required(),
-    longitude: Joi.number().allow("").optional(),
-    latitude: Joi.number().allow("").optional(),
-    distance: Joi.number().allow("").optional(),
-    difficulty: Joi.string().required(),
+    title: Joi.string().example("Mahon Falls").required(),
+    description: Joi.string().example("Nice Waterfall").required(),
+    longitude: Joi.number().example("78.465").optional(),
+    latitude: Joi.number().example("78.465").optional(),
+    distance: Joi.number().example("10").optional(),
+    difficulty: Joi.string().example("Beginner").optional(),
     userid: IdSpec,
     public_location: Joi.boolean().optional().default(false),
   })
   .label("Location");
+
+export const LocationArray = Joi.array().items(LocationSpec).label("LocationArray");
+
 
 export const LocationSpecPlus = LocationSpec.keys({
   _id: IdSpec,

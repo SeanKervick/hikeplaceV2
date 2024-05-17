@@ -50,28 +50,28 @@ export const hikeplaceService = {
     return res.data;
   },
 
-  async getAllHikes() {
-    const res = await axios.get(`${this.hikeplaceUrl}/api/hikes`);
-    return res.data;
-  },
+  // async getAllHikes() {
+  //   const res = await axios.get(`${this.hikeplaceUrl}/api/hikes`);
+  //   return res.data;
+  // },
 
-  async createHike(id, hike) {
-    const res = await axios.post(`${this.hikeplaceUrl}/api/locations/${id}/hikes`, hike);
-    return res.data;
-  },
+  // async createHike(id, hike) {
+  //   const res = await axios.post(`${this.hikeplaceUrl}/api/locations/${id}/hikes`, hike);
+  //   return res.data;
+  // },
 
-  async deleteAllHikes() {
-    const res = await axios.delete(`${this.hikeplaceUrl}/api/hikes`);
-    return res.data;
-  },
+  // async deleteAllHikes() {
+  //   const res = await axios.delete(`${this.hikeplaceUrl}/api/hikes`);
+  //   return res.data;
+  // },
 
-  async getHike(id) {
-    const res = await axios.get(`${this.hikeplaceUrl}/api/hikes/${id}`);
-    return res.data;
-  },
+  // async getHike(id) {
+  //   const res = await axios.get(`${this.hikeplaceUrl}/api/hikes/${id}`);
+  //   return res.data;
+  // },
 
-  async deleteHike(id) {
-    const res = await axios.delete(`${this.hikeplaceUrl}/api/hikes/${id}`);
-    return res.data;
-  },
+  // async deleteHike(id) {
+  //   const res = await axios.delete(`${this.hikeplaceUrl}/api/hikes/${id}`);
+  //   return res.data;
+  // },
 };

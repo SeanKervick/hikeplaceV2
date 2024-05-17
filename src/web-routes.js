@@ -25,6 +25,7 @@ export const webRoutes = [
   { method: "GET", path: "/admin", config: adminController.index },
   { method: "GET", path: "/admin/deleteuser/{id}", config: adminController.deleteUser },
   { method: "GET", path: "/admin/deleteallusers", config: adminController.deleteAllUsers },
+  { method: "GET", path: "/admin/deletealllocations", config: adminController.deleteAllLocations },
 
   { method: "POST", path: "/dashboard/uploadimage/{id}", config: dashboardController.uploadImage },
   

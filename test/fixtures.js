@@ -29,15 +29,13 @@ export const testUsers = [
 ];
 
 export const waterford = {
-title: "waterford"
-};
-
-export const mahonFalls = {
-  "hikeName": "Mahon Falls",
-  "description": "Nice flat to waterfall",
-  "difficulty": "easy",
-  "length": 10,
-  "elevation": "steep"
+title: "waterford",
+description: "Nice flat walk to waterfall",
+longitude: "78.465",
+latitude: "78.465",
+distance: "10",
+difficulty: "Beginner",
+public_location: "true"
 };
 
 export const kerry = {
@@ -46,36 +44,30 @@ export const kerry = {
 
 export const testLocations = [
   {
-    title: "cork"
+    title: "waterford",
+    description: "Nice flat walk to waterfall",
+    longitude: "78.465",
+    latitude: "78.465",
+    distance: "10",
+    difficulty: "Beginner",
+    public_location: "true"
   },
   {
-    title: "kerry"
+    title: "waterford",
+    description: "Nice flat walk to waterfall",
+    longitude: "78.465",
+    latitude: "78.465",
+    distance: "10",
+    difficulty: "Beginner",
+    public_location: "true"
   },
   {
-    title: "waterford"
-  }
-];
-
-export const testHikes = [
-  {
-    "hikeName": "Mahon Falls",
-    "description": "Nice flat to waterfall",
-    "difficulty": "easy",
-    "length": 2,
-    "elevation": "flat"
-  },
-  {
-    "hikeName": "gap of dunloe",
-    "description": "narrow mountain pass running through kerry",
-    "difficulty": "medium",
-    "length": 15,
-    "elevation": "flat"
-  },
-  {
-    "hikeName": "Carorauntoohill",
-    "description": "highest peak in ireland",
-    "difficulty": "hard",
-    "length": 5,
-    "elevation": "steep"
+    title: "waterford",
+    description: "Nice flat walk to waterfall",
+    longitude: "78.465",
+    latitude: "78.465",
+    distance: "10",
+    difficulty: "Beginner",
+    public_location: "true"
   }
 ];

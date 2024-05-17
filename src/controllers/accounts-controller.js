@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import bcrypt from "bcrypt";
 import { db } from "../models/db.js";
 import { UserSpec, UserCredentialsSpec, } from "../models/joi-schemas.js";
 
@@ -23,6 +24,8 @@ export const accountsController = {
       return h.view("admin-view", { title: "admin for hikeplace" });
     },
   },
+
+
   signup: {
     auth: false,
     validate: {
@@ -32,11 +35,36 @@ export const accountsController = {
       },
     },
     handler: async function (request, h) {
-      const user = request.payload;
-      await db.userStore.addUser(user);
-      return h.redirect("/");
-    },
+      try {
+        console.log("Handler Trying");
+        const user = request.payload;
+        console.log(user);
+
+        const saltRounds = 10; // Typically a value between 10 and 12
+
+        // Generate salt
+        const salt = await bcrypt.genSalt(saltRounds);
+        console.log("Salt generation successful");
+
+        // Hash the password
+        const hash = await bcrypt.hash(user.password, salt);
+        console.log("Hashed password:", hash);
+
+        // Save the user with the hashed password
+        user.password = hash;
+        await db.userStore.addUser(user);
+
+        // Redirect or respond
+        return h.redirect("/");
+      } catch (err) {
+        console.error(err);
+        // Handle the error appropriately
+        return h.response({ error: "An error occurred" }).code(500);
+      }
+    }
   },
+
+
   
   showLogin: {
     auth: false,
@@ -44,6 +72,9 @@ export const accountsController = {
       return h.view("login-view", { title: "login to hikeplace" });
     },
   },
+
+
+
 
   login: {
     auth: false,
@@ -55,7 +86,6 @@ export const accountsController = {
       },
     },
     handler: async function (request, h) {
-
       const { email, password } = request.payload;
 
       if (email === process.env.adminEmail && password === process.env.adminPassword) {
@@ -63,12 +93,21 @@ export const accountsController = {
         console.log("logging in: admin");
         return h.redirect("/admin");
       }
+
       const user = await db.userStore.getUserByEmail(email);
-      if (!user || user.password !== password) {
-        console.log("no match");
+      if (!user) {
+        console.log("User not found");
         loggedIn = false; // variable to control menu options
         return h.redirect("/");
       }
+
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      if (!isPasswordValid) {
+        console.log("Password mismatch");
+        loggedIn = false; // variable to control menu options
+        return h.redirect("/");
+      }
+
       request.cookieAuth.set({ id: user._id });
       loggedIn = true; // variable to control menu options
       console.log("user logged in");
@@ -76,6 +115,10 @@ export const accountsController = {
       return h.redirect("/dashboard");
     },
   },
+
+
+
+
 
   logout: {
     handler: function (request, h) {

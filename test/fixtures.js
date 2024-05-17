@@ -38,10 +38,6 @@ difficulty: "Beginner",
 public_location: "true"
 };
 
-export const kerry = {
-  title: "kerry"
-};
-
 export const testLocations = [
   {
     title: "waterford",

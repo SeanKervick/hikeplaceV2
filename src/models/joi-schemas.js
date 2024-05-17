@@ -27,7 +27,7 @@ export const LocationSpec = Joi.object()
     longitude: Joi.number().example("78.465").optional(),
     latitude: Joi.number().example("78.465").optional(),
     distance: Joi.number().example("10").optional(),
-    difficulty: Joi.string().example("Beginner").optional(),
+    difficulty: Joi.string().example("Beginner").required(),
     userid: IdSpec,
     public_location: Joi.boolean().optional().default(false),
   })

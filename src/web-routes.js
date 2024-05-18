@@ -3,6 +3,7 @@ import { dashboardController } from "./controllers/dashboard-controller.js";
 import { aboutController } from "./controllers/about-controller.js";
 import { adminController } from "./controllers/admin-controller.js";
 import { publicController } from "./controllers/public-controller.js";
+import { reviewController } from "./controllers/review-controller.js";
 
 
 export const webRoutes = [
@@ -17,6 +18,7 @@ export const webRoutes = [
   { method: "POST", path: "/dashboard/addlocation", config: dashboardController.addLocation },
 
   { method: "GET", path: "/public", config: publicController.index },
+  { method: "POST", path: "/review/add/{id}", config: reviewController.addReview },
 
   { method: "GET", path: "/about", config: aboutController.index },
 

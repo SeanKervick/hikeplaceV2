@@ -11,6 +11,20 @@
         <p><strong>Distance:</strong> {{distance}}km</p>
         <p><strong>Difficulty:</strong> {{difficulty}}</p>
         <p><strong>Added By:</strong> {{userid.firstName}} {{userid.lastName}}</p>
+        <p><strong>Public Location:</strong> {{#if public_location }} Yes {{else}} No {{/if}}</p>
+        {{!-- Display reviews --}}
+        {{#if reviews}}
+        <div class="reviews">
+          <h4>Reviews:</h4>
+          <div class="review">
+            <p><strong>Review by:</strong> {{userid.firstName}} {{userid.lastName}}</p>
+            <p><strong>Content:</strong> {{reviews.content}}</p>
+            <p><strong>Rating:</strong> {{reviews.rating}}</p>
+          </div>
+        </div>
+        {{else}}
+        <p>No reviews yet.</p>
+        {{/if}}
       </div>
     </div>
     {{!-- right column --}}
@@ -23,4 +37,15 @@
     </div>
   </div>
 </div>
+        <!-- Add Review Form -->
+        <form action="/review/add/{{_id}}" method="POST">
+          <div class="field">
+            <textarea class="textarea" placeholder="Write a review..." name="content"></textarea>
+          </div>
+          <div class="field">
+            <input class="input" type="number" placeholder="Rating (1-5)" name="rating" min="1" max="5">
+          </div>
+          <input type="hidden" name="locationid" value="{{_id}}">
+          <button class="button is-primary" type="submit">Submit Review</button>
+        </form>
 {{/each}}

@@ -1,14 +1,11 @@
 import { Location } from "./location.js";
+import { Review } from "./review.js";
+
 
 export const locationMongoStore = {
   async getAllLocations() {
     const locations = await Location.find().lean();
     return locations;
-  },
-
-  async getAllPublicLocations() {
-    const publicLocations = await Location.find({ public_location: true }).populate("userid", "firstName lastName").lean();
-    return publicLocations;
   },
 
   async getLocationById(id) {
@@ -59,5 +56,49 @@ export const locationMongoStore = {
       const updatedLocation = await location.save();
       return updatedLocation;
     },
+
+    async addReviewToLocation(locationId, reviewId) {
+      const location = await Location.findById(locationId);
+      if (!location) {
+        throw new Error(`Location with id ${locationId} not found`);
+      }
+      if (!location.reviews) {
+        location.reviews = [];
+      }
+      console.log("Location object before adding review:", location);
+      location.reviews = reviewId;
+      await location.save();
+    },
+    
+
+    async getAllPublicLocations() {
+      const publicLocations = await Location.find({ public_location: true })
+        .populate("userid", "firstName lastName")
+        .populate({
+          path: "reviews",
+          populate: { path: "userid", select: "firstName lastName" }
+        })
+        .lean();
+      return publicLocations;
+    },
+
+    async addNewReview(review) {
+      try {
+        const newReview = new Review(review);
+        await newReview.save();
+        return newReview;
+      } catch (err) {
+        console.error("Error adding review", err);
+        return null;
+      }
+    },
   
+    async getReviewById(id) {
+      try {
+        return await Review.findById(id).populate("userid", "firstName lastName").lean();
+      } catch (err) {
+        console.error(`Error fetching review by id: ${id}`, err);
+        return null;
+      }
+    },
 };

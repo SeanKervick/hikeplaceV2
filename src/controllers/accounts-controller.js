@@ -40,7 +40,7 @@ export const accountsController = {
         const user = request.payload;
         console.log(user);
 
-        const saltRounds = 10; // Typically a value between 10 and 12
+        const saltRounds = 10;
 
         // Generate salt
         const salt = await bcrypt.genSalt(saltRounds);
@@ -54,11 +54,9 @@ export const accountsController = {
         user.password = hash;
         await db.userStore.addUser(user);
 
-        // Redirect or respond
         return h.redirect("/");
       } catch (err) {
         console.error(err);
-        // Handle the error appropriately
         return h.response({ error: "An error occurred" }).code(500);
       }
     }
@@ -72,9 +70,6 @@ export const accountsController = {
       return h.view("login-view", { title: "login to hikeplace" });
     },
   },
-
-
-
 
   login: {
     auth: false,
@@ -115,10 +110,6 @@ export const accountsController = {
       return h.redirect("/dashboard");
     },
   },
-
-
-
-
 
   logout: {
     handler: function (request, h) {

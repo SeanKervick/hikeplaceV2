@@ -15,6 +15,10 @@ const locationSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  reviews: {
+    type: Schema.Types.ObjectId,
+    ref: "Review",
+  },
 });
 
 export const Location = Mongoose.model("Location", locationSchema);

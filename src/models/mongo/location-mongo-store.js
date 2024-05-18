@@ -62,10 +62,10 @@ export const locationMongoStore = {
       if (!location) {
         throw new Error(`Location with id ${locationId} not found`);
       }
-      if (!location.reviews) {
-        location.reviews = [];
-      }
-      console.log("Location object before adding review:", location);
+      // if (!location.reviews) {
+      //   location.reviews = [];
+      // }
+      // console.log("Location object before adding review:", location);
       location.reviews = reviewId;
       await location.save();
     },
@@ -93,12 +93,8 @@ export const locationMongoStore = {
       }
     },
   
-    async getReviewById(id) {
-      try {
-        return await Review.findById(id).populate("userid", "firstName lastName").lean();
-      } catch (err) {
-        console.error(`Error fetching review by id: ${id}`, err);
-        return null;
-      }
+    async getLocationReviews(id) {
+      const reviews = await Review.find({ location: id }).lean();
+      return reviews;
     },
 };

@@ -1,5 +1,5 @@
 <p align="center">
-<h1 style="font-size: 36px; margin-bottom: 20px;">hikeplace!</h1>
+<h1 style="font-size: 36px; margin-bottom: 20px;">hikeplaceV2!</h1>
 <img src="/public/images/readme-photo.png" alt="Image" width="75%"/>
 </p>
 
@@ -29,6 +29,10 @@
     - Enhanced Features:
       • Images
       • Admin User/Dashboard
+      • Public/Private POIs
+      • Hashing & Salting of passwords
+      • Reviews & Ratings
+
 
 
 **Software & Platforms**
@@ -51,20 +55,18 @@
 
 * See the full project deployed here:
 
-  https://hikeplace.onrender.com/
-
-  or here:
-
-  https://season-efficient-goal.glitch.me/
+  https://hikeplacev2.onrender.com/
 
 
 ### Installation
 
 * Download the project here: 
 
-   • https://github.com/SeanKervick/hikeplace/archive/refs/heads/master.zip
+   • https://github.com/SeanKervick/hikeplaceV2/archive/refs/heads/master.zip
    
    • run 'npm install' from inside the project directory in a terminal.
+
+   • run 'npm run start' to run the project on a localhost.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

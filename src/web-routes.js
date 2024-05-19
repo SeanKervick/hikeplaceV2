@@ -18,6 +18,8 @@ export const webRoutes = [
   { method: "POST", path: "/dashboard/addlocation", config: dashboardController.addLocation },
 
   { method: "GET", path: "/public", config: publicController.index },
+  { method: "GET", path: "/public/not-logged-in", config: publicController.other },
+
   { method: "POST", path: "/review/add/{id}", config: reviewController.addReview },
 
   { method: "GET", path: "/about", config: aboutController.index },

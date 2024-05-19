@@ -1,0 +1,25 @@
+<!-- Add Review Form Box -->
+<div class="box" style="text-align: left;">
+  <strong>Add a Review for {{title}}:</strong>
+  <form action="/review/add/{{_id}}" method="POST">
+    <div class="field">
+      <textarea class="textarea" placeholder="Write a review..." name="content"></textarea>
+    </div>
+    <div class="field">
+      <div class="control">
+        <div class="select" type="number" placeholder="Rating (1-5)">
+          <select name="rating">
+            <option value="" disabled selected>Select Rating</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+      </div>
+      <input type="hidden" name="locationid" value="{{_id}}">
+      <button class="button is-primary" type="submit">Submit Review</button>
+  </form>
+</div>

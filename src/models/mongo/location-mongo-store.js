@@ -11,9 +11,6 @@ export const locationMongoStore = {
   async getLocationById(id) {
     if (id) {
       const location = await Location.findOne({ _id: id }).lean();
-      if (location) {
-        // location.hikes = await hikeMongoStore.getHikesByLocationId(location._id);
-      }
       return location;
     }
     return null;
@@ -42,7 +39,7 @@ export const locationMongoStore = {
     await Location.deleteMany({});
   },
 
-    // function to update a location image
+    // function to add a location image
     async updateLocationImage(locationId, imageUrl) {
       // find the location by ID
       const location = await Location.findById(locationId);
@@ -58,22 +55,25 @@ export const locationMongoStore = {
     },
 
     async addReviewToLocation(locationId, reviewId) {
+      // Find the location by its ID
       const location = await Location.findById(locationId);
+
       if (!location) {
         throw new Error(`Location with id ${locationId} not found`);
       }
-      // if (!location.reviews) {
-      //   location.reviews = [];
-      // }
-      // console.log("Location object before adding review:", location);
+
+      // Add the review ID to the location & save
       location.reviews = reviewId;
       await location.save();
     },
     
 
     async getAllPublicLocations() {
+      // get all locations that have the value of true for public_location
       const publicLocations = await Location.find({ public_location: true })
+        // populate user who added the public location
         .populate("userid", "firstName lastName")
+        // populate reviews and the user who added the review
         .populate({
           path: "reviews",
           populate: { path: "userid", select: "firstName lastName" }
@@ -92,9 +92,4 @@ export const locationMongoStore = {
         return null;
       }
     },
-  
-    async getLocationReviews(id) {
-      const reviews = await Review.find({ location: id }).lean();
-      return reviews;
-    },
-};
+}

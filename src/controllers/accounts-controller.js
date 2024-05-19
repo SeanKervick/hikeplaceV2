@@ -59,8 +59,6 @@ export const accountsController = {
       }
     }
   },
-
-
   
   showLogin: {
     auth: false,
@@ -80,7 +78,8 @@ export const accountsController = {
     },
     handler: async function (request, h) {
       const { email, password } = request.payload;
-
+      
+      // Check if the credentials match the admin's credentials from the .env file
       if (email === process.env.adminEmail && password === process.env.adminPassword) {
         request.cookieAuth.set({ id: "admin" });
         console.log("logging in: admin");
@@ -93,9 +92,10 @@ export const accountsController = {
         return h.redirect("/");
       }
 
+      // Compare the provided password with the stored hashed password
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
-        console.log("Password mismatch");
+        console.log("Password does not match");
         return h.redirect("/");
       }
 

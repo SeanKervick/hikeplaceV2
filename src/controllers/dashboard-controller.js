@@ -46,11 +46,9 @@ export const dashboardController = {
   uploadImage: {
     handler: async function (request, h) {
       try {
-        console.log("image trying");
         const location = await db.locationStore.getLocationById(request.params.id);
         const file = request.payload.imagefile;
         if (Object.keys(file).length > 0) {
-          console.log("image 'if' trying");
           const url = await imageStore.uploadImage(request.payload.imagefile);
           location.img = url;
           await db.locationStore.updateLocationImage(location._id, url);
